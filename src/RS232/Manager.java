@@ -260,18 +260,18 @@ public class Manager  extends RS232Settings {
             }
             else if(event.isCTS()){//If CTS line has changed state
                 if(event.getEventValue() == 1){//If line is ON
-                    System.out.println("CTS - ON");
+                    logger.info("CTS - ON");
                 }
                 else {
-                    System.out.println("CTS - OFF");
+                    logger.info("CTS - OFF");
                 }
             }
             else if(event.isDSR()){///If DSR line has changed state
                 if(event.getEventValue() == 1){//If line is ON
-                    System.out.println("DSR - ON");
+                    logger.info("DSR - ON");
                 }
                 else {
-                    System.out.println("DSR - OFF");
+                    logger.info("DSR - OFF");
                 }
             }
         }

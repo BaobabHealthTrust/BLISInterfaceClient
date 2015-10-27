@@ -26,4 +26,5 @@ public class settings {
     public static boolean ENABLE_AUTO_POOL;
     public static boolean SERVER_MODE;
     public static boolean AUTO_SPECIMEN_ID;
+    public static boolean CLI_MODE;
 }

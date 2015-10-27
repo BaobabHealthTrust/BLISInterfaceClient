@@ -20,7 +20,11 @@ import system.settings;
  * @author Stephen Adjei-Kyei <stephen.adjei.kyei@gmail.com>
  */
 public class logger {
-    
+
+    public synchronized static void info(String log) {
+        System.out.println(getCurrentTimeStamp()+": "+log);
+    }
+
     public synchronized static void Logger(String log)
     {
          if(!settings.ENABLE_LOG)

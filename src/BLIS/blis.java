@@ -157,7 +157,7 @@ public class blis {
         }
          return data.trim();
     }
-    public static String saveResults(String specimenID, int measureID, float result,int dec)
+    public static String saveResults(String specimenID, int measureID, Float result,int dec)
     {
         
         String data="-1";
@@ -194,6 +194,43 @@ public class blis {
         }
          return data.trim(); 
     }
+    public static String saveResults(String specimenID, int measureID, String result,int dec)
+        {
+
+            String data="-1";
+            try
+            {
+                    String url = settings.BLIS_URL;
+                    url = url + "api/update_result.php?username="+settings.BLIS_USERNAME + "&password="+settings.BLIS_PASSWORD;
+                    url = url + "&specimen_id="+URLEncoder.encode(specimenID,"UTF-8");
+                    url = url + "&measure_id="+measureID;
+                    url = url + "&result="+result;
+                    url = url + "&dec="+dec;
+
+
+                    URL burl = new URL(url);
+
+                     try (BufferedReader in = new BufferedReader(new InputStreamReader(burl.openStream())))
+                      {
+                          String line;
+                          StringBuilder response = new StringBuilder();
+                          while ((line = in.readLine()) != null)
+                          {
+                             response.append(line);
+
+                          }
+                          data = response.toString();
+
+                      } catch(Exception e){ log.logger.Logger(e.getMessage());}
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(blis.class.getName()).log(Level.SEVERE, null, ex);
+                log.logger.Logger(ex.getMessage());
+                log.logger.PrintStackTrace(ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(blis.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             return data.trim();
+        }
     public static String saveResults(Message resultmsg)
     {    
         
