@@ -73,9 +73,11 @@ public class MainForm extends javax.swing.JFrame {
     public static RESET set = RESET.WAIT;
 
     public MainForm() {
-        initComponents();
-        initTray();
-        setIconImage(Toolkit.getDefaultToolkit().getImage("net.jpg"));
+        if (! settings.CLI_MODE) {
+            initComponents();
+            initTray();
+            setIconImage(Toolkit.getDefaultToolkit().getImage("net.jpg"));
+        }
     }
 
     private void initTray() {
