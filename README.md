@@ -12,19 +12,19 @@ The Messaging formats supported are HL7, ASTM, ABX Proprietary Format, Vital Pro
 Requires Java Runtime 1.7 or above
 
 Equipment supported by v2.6.12.1 below:
-*ABX Pentra 60C+
-*ABX MICROS 60
-*ABX Pentra 80
-*BD FACSCalibur
-*BT3000 Plus
-*BT3000 Plus-Chameleon
-*Flexor E
-*Flexor Junior
-*Selectra Junior
-*Mindray BS-200E
-*MINDRAY BC 3600
-*MINDRAY BC 3000 (added by espinoj)
-*SYSMEX XS-500i
-*SYSMEX XT-2000i
-*GeneXpert
+* ABX Pentra 60C+
+* ABX MICROS 60
+* ABX Pentra 80
+* BD FACSCalibur
+* BT3000 Plus
+* BT3000 Plus-Chameleon
+* Flexor E
+* Flexor Junior
+* Selectra Junior
+* Mindray BS-200E
+* MINDRAY BC 3600
+* MINDRAY BC 3000 (added by espinoj)
+* SYSMEX XS-500i
+* SYSMEX XT-2000i
+* GeneXpert
 
