@@ -349,6 +349,15 @@ class Micros60ConfigHandler extends DefaultHandler
                           data =  content;
                     }
                   break;
+              case "listestname":
+                  if(whichdata == 8)
+                  {
+                      if(!data.isEmpty())
+                          data = data + ","+ content;
+                      else
+                          data =  content;
+                  }
+                  break;
           }    
           
       }

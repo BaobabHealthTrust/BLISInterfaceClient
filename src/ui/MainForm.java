@@ -60,6 +60,7 @@ public class MainForm extends javax.swing.JFrame {
     CobasAmpliPrep cobasObj = null;
     MindrayBC3600 minbc3600obj = null;
     MindrayBC3000 minbc3000obj = null;
+    MindrayBC5800 minbc5800obj = null;
     GeneXpert expobj = null;
     SYSMEXXT2000i sys2000iObj = null;
     FlexorE flexObj = null;
@@ -504,6 +505,9 @@ public class MainForm extends javax.swing.JFrame {
                     case "SYSMEX XT-2000I":
                         sys2000iObj.Stop();
                         break;
+                    case "MINDRAY BC 5800":
+                        minbc5800obj.Stop();
+                        break;
                 }
                 break;
             case "MSACCESS":
@@ -594,6 +598,10 @@ public class MainForm extends javax.swing.JFrame {
                     case "SYSMEX XT-2000I":
                         sys2000iObj = new SYSMEXXT2000i();
                         sys2000iObj.start();
+                        break;
+                    case "MINDRAY BC 5800":
+                        minbc5800obj = new MindrayBC5800();
+                        minbc5800obj.start();
                         break;
                 }
                 break;

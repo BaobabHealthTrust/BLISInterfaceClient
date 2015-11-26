@@ -214,6 +214,9 @@ class ClientThread extends Thread
                         case "SYSMEX XT-2000i":
                             SYSMEXXT2000i.handleMessage(read);
                             break;
+                        case "Mindray BC 5800":
+                            MindrayBC5800.handleMessage(read);
+                            break;
                     }   
                   }
                             
