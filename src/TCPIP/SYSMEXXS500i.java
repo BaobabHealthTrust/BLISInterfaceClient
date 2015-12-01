@@ -288,7 +288,6 @@ public class SYSMEXXS500i extends Thread{
                              log.AddToDisplay.Display("\nTest with Code: "+SampleID +" not Found on BLIS",DisplayMessageType.WARNING);
                         }
 
-
                 }
                 else
                 {
