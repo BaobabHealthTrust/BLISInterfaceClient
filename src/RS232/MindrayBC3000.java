@@ -78,6 +78,7 @@ public class MindrayBC3000 extends Thread {
 
         // check for end of message
         if (data.contains(String.valueOf(EOF))) {
+
             // append the last of the data
             int endIndex = data.indexOf(String.valueOf(EOF));
             dataReceived.append(data.substring(0, endIndex));
@@ -102,8 +103,11 @@ public class MindrayBC3000 extends Thread {
 
     private static String[] normalizeData(String data) {
         // Data is a string of numbers that are fixed width and decimal places implied
-        // WBC[109/L] ###.# Lymph#[109/L] ###.# Mid#[109/L] ###.# Gran#[109/L] ###.# Lymph%[%] ##.# Mid%[%] ##.# Gran%[%] ##.# RBC[1012/L] ##.# HGB[g/L] ### MCHC[g/L] #### MCV[fL] ###.# MCH [pg] ###.# RDW-CV[%] ##.# HCT[%] ##.# PLT[109/L] #### MPV[fL] ##.# PDW ##.# PCT[%] .###  RDW-SD[fL] ###.#
-        String[] dataFormat = {"###.#", "###.#", "###.#", "###.#", "##.#", "##.#", "##.#", "#.##", "##.#", "###.#", "###.#", "###.#", "##.#", "##.#", "####", "##.#", "##.#", "#.##", "###.#"};
+        // WBC[109/L] ###.# Lymph#[109/L] ###.# Mid#[109/L] ###.# Gran#[109/L] ###.# Lymph%[%] ##.# Mid%[%] ##.# Gran%[%]
+        // ##.# RBC[1012/L] ##.# HGB[g/L] ### MCHC[g/L] #### MCV[fL] ###.# MCH [pg] ###.# RDW-CV[%] ##.# HCT[%] ##.#
+        // PLT[109/L] #### MPV[fL] ##.# PDW ##.# PCT[%] .###  RDW-SD[fL] ###.#
+        String[] dataFormat = {"###.#", "###.#", "###.#", "###.#", "##.#", "##.#", "##.#", "#.##", "##.#", "###.#",
+                "###.#", "###.#", "##.#", "##.#", "####", "##.#", "##.#", ".###", "###.#"};
 
         String[] norm = new String[dataFormat.length];
         int currentDataIndexLocation = 0;
@@ -141,22 +145,35 @@ public class MindrayBC3000 extends Thread {
         int ind = 0;
         try {
             formatted = String.valueOf(Integer.parseInt(value));
-            for (int i = pattern.length() - 1, in = 0; i >= 0; i--, in++) {
-                if (pattern.charAt(i) == '.') {
-                    ind = in;
-                    break;
-                }
-            }
 
-            if (ind > 0) {
-                for (int i = value.length() - 1, in = 0; i >= 0; i--, in++) {
-                    if (in == ind) {
-                        formatted = value.substring(0, i + 1) + "." + value.substring(i + 1);
-                        formatted = String.valueOf(Float.parseFloat(formatted));
+            if(pattern == ".###") {
+
+                formatted = "0." + formatted;
+
+                formatted = String.valueOf(Float.parseFloat(formatted));
+
+            } else {
+
+                for (int i = pattern.length() - 1, in = 0; i >= 0; i--, in++) {
+                    if (pattern.charAt(i) == '.') {
+                        ind = in;
                         break;
                     }
-
                 }
+
+                if (ind > 0) {
+                    for (int i = value.length() - 1, in = 0; i >= 0; i--, in++) {
+
+                        System.out.println(pattern + " -> " + ind + "; " + value.length() + " : " + in);
+
+                        if (in == ind) {
+                            formatted = value.substring(0, i + 1) + "." + value.substring(i + 1);
+                            formatted = String.valueOf(Float.parseFloat(formatted));
+                            break;
+                        }
+                    }
+                }
+
             }
         } catch (NumberFormatException ex) {
             formatted = "0";
@@ -173,6 +190,8 @@ public class MindrayBC3000 extends Thread {
         // check for empty message
         if (null == dataReceivedString || dataReceivedString.isEmpty())
             return;
+
+        dataReceivedString = dataReceivedString.trim();
 
         // check to see if this is a sample for processing
         if (!"A".equals(dataReceivedString.substring(0, 1)))
