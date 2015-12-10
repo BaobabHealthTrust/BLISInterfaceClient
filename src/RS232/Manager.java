@@ -236,6 +236,9 @@ public class Manager extends RS232Settings {
                             case "FLEXOR E":
                                 FlexorE.HandleDataInput(buffer);
                                 break;
+                            case "ERBA LYTE PLUS":
+                                ErbaLytePlus.HandleDataInput(buffer);
+                                break;
 
                         }
 

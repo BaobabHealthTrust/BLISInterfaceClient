@@ -61,6 +61,8 @@ public class MainForm extends javax.swing.JFrame {
     MindrayBC3600 minbc3600obj = null;
     MindrayBC3000 minbc3000obj = null;
     MindrayBC5800 minbc5800obj = null;
+    MindrayBC120 minbc120obj = null;
+    ErbaLytePlus minerbalyteplusobj = null;
     GeneXpert expobj = null;
     SYSMEXXT2000i sys2000iObj = null;
     FlexorE flexObj = null;
@@ -471,6 +473,9 @@ public class MainForm extends javax.swing.JFrame {
                     case "FLEXOR E":
                         flexObj.Stop();
                         break;
+                    case "ERBA LYTE PLUS":
+                        minerbalyteplusobj.Stop();
+                        break;
 
                 }
 
@@ -507,6 +512,9 @@ public class MainForm extends javax.swing.JFrame {
                         break;
                     case "MINDRAY BC 5800":
                         minbc5800obj.Stop();
+                        break;
+                    case "MINDRAY BC 120":
+                        minbc120obj.Stop();
                         break;
                 }
                 break;
@@ -560,6 +568,10 @@ public class MainForm extends javax.swing.JFrame {
                         flexObj = new FlexorE();
                         flexObj.start();
                         break;
+                    case "ERBA LYTE PLUS":
+                        minerbalyteplusobj = new ErbaLytePlus();
+                        minerbalyteplusobj.start();
+                        break;
                 }
                 break;
             case "TCP/IP":
@@ -602,6 +614,10 @@ public class MainForm extends javax.swing.JFrame {
                     case "MINDRAY BC 5800":
                         minbc5800obj = new MindrayBC5800();
                         minbc5800obj.start();
+                        break;
+                    case "MINDRAY BC 120":
+                        minbc120obj = new MindrayBC120();
+                        minbc120obj.start();
                         break;
                 }
                 break;

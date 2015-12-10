@@ -36,6 +36,10 @@ class ClientThread extends Thread {
     private static final char ETX = 0x03;
     private static final char ETB = 0x17;
 
+    private static final char HEX1C = 0x1C;
+
+    private static final char HEX0B = 0x0B;
+
     public ClientThread(Socket conn, String Equipment) {
         this.connSock = conn;
         this.Equipmentname = Equipment;
@@ -149,19 +153,36 @@ class ClientThread extends Thread {
 
                         while ((input = inFromEquipment.readLine()).length() > 1) {
 
-                            // System.out.println(input);
-
                             read = read + input + "\r";
                             //count++;
                         }
 
+                    } else if (this.Equipmentname.equalsIgnoreCase("Mindray BC 120")) {
+
+                        int c = 0;
+                        int val;
+                        String line = "";
+                        while ((val = inFromEquipment.read()) > -1) {
+                            if (val != HEX0B && val != CARRIAGE_RETURN) {
+                                line = line + (char) val;
+                                if ((char) val == HEX1C) {
+                                    break;
+                                }
+                            } else {
+                                line = line + "\r";
+                                read = read + line;
+                                line = "";
+                                c++;
+                            }
+                        }
+
                     } else {
 
-                            while ((input = inFromEquipment.readLine()) != null) {
+                        while ((input = inFromEquipment.readLine()) != null) {
 
-                                read = read + input + "\r";
-                                //count++;
-                            }
+                            read = read + input + "\r";
+                            //count++;
+                        }
 
                     }
 
@@ -199,6 +220,12 @@ class ClientThread extends Thread {
                             break;
                         case "Mindray BC 5800":
                             MindrayBC5800.handleMessage(read);
+                            break;
+                        case "Mindray BC 120":
+
+                            System.out.println(read);
+
+                            MindrayBC120.handleMessage(read);
                             break;
                     }
                 }
