@@ -88,6 +88,30 @@ class ClientThread extends Thread {
                           /*if(c>=29)
                               break;*/
                         }
+                    } else if (this.Equipmentname.equalsIgnoreCase("ERBA XL 200")) {
+                        int c = 0;
+                        int val;
+                        String line = "";
+                        while ((val = inFromEquipment.read()) > -1) {
+                            if(val == ENQ) {
+
+                                System.out.println("Query sent");
+
+                                ErbaXL200.OutQueue.add("\u0006");
+
+                            } else if (val != 13)
+                                line = line + (char) val;
+                            else {
+                                line = line + "\r";
+                                read = read + line;
+                                if (line.startsWith("L|1|N"))
+                                    break;
+                                line = "";
+                                c++;
+                            }
+                          /*if(c>=29)
+                              break;*/
+                        }
                     } else if (this.Equipmentname.equalsIgnoreCase("BT3000PlUSChameleon") || this.Equipmentname.equalsIgnoreCase("SYSMEX XT-2000i")) {
                         int c = 0;
                         int val;
@@ -222,10 +246,10 @@ class ClientThread extends Thread {
                             MindrayBC5800.handleMessage(read);
                             break;
                         case "Mindray BC 120":
-
-                            System.out.println(read);
-
                             MindrayBC120.handleMessage(read);
+                            break;
+                        case "Erba XL 200":
+                            ErbaXL200.handleMessage(read);
                             break;
                     }
                 }

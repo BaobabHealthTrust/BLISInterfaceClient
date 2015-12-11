@@ -65,6 +65,7 @@ public class MainForm extends javax.swing.JFrame {
     ErbaLytePlus minerbalyteplusobj = null;
     GeneXpert expobj = null;
     SYSMEXXT2000i sys2000iObj = null;
+    ErbaXL200 erbaxl200obj = null;
     FlexorE flexObj = null;
 
     //public static boolean reset = false;
@@ -516,6 +517,9 @@ public class MainForm extends javax.swing.JFrame {
                     case "MINDRAY BC 120":
                         minbc120obj.Stop();
                         break;
+                    case "ERBA XL 200":
+                        erbaxl200obj.Stop();
+                        break;
                 }
                 break;
             case "MSACCESS":
@@ -618,6 +622,10 @@ public class MainForm extends javax.swing.JFrame {
                     case "MINDRAY BC 120":
                         minbc120obj = new MindrayBC120();
                         minbc120obj.start();
+                        break;
+                    case "ERBA XL 200":
+                        erbaxl200obj = new ErbaXL200();
+                        erbaxl200obj.start();
                         break;
                 }
                 break;
