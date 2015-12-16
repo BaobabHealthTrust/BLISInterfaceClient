@@ -67,6 +67,7 @@ public class MainForm extends javax.swing.JFrame {
     SYSMEXXT2000i sys2000iObj = null;
     ErbaXL200 erbaxl200obj = null;
     FlexorE flexObj = null;
+    AquiosCL aquiosclObj = null;
 
     //public static boolean reset = false;
     public static enum RESET {
@@ -520,6 +521,9 @@ public class MainForm extends javax.swing.JFrame {
                     case "ERBA XL 200":
                         erbaxl200obj.Stop();
                         break;
+                    case "AQUIOS CL":
+                        aquiosclObj.Stop();
+                        break;
                 }
                 break;
             case "MSACCESS":
@@ -626,6 +630,10 @@ public class MainForm extends javax.swing.JFrame {
                     case "ERBA XL 200":
                         erbaxl200obj = new ErbaXL200();
                         erbaxl200obj.start();
+                        break;
+                    case "AQUIOS CL":
+                        aquiosclObj = new AquiosCL();
+                        aquiosclObj.start();
                         break;
                 }
                 break;

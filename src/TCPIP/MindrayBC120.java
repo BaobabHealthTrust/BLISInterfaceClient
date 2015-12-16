@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import log.DisplayMessageType;
 import system.SampleDataJSON;
 import system.utilities;
-
+//Correction: Mindray BS 120
 /**
  * @author Chimwemwe Kachaje <chimwemwe.kachaje@baobabhealth.org>
  */
@@ -30,6 +30,7 @@ public class MindrayBC120 extends Thread {
     String read;
     boolean first = true;
     Socket connSock = null;
+    ServerSocket welcomeSocket=null;
     Iterator list = null;
     static Queue<String> OutQueue = new LinkedList<>();
     static final char CARRIAGE_RETURN = 13;
@@ -77,14 +78,14 @@ public class MindrayBC120 extends Thread {
     @Override
     public void run() {
         log.AddToDisplay.Display("Mindray BC 120 handler started...", DisplayMessageType.TITLE);
-        log.AddToDisplay.Display("Starting Server scoket on port " + tcpsettings.PORT, DisplayMessageType.INFORMATION);
+        log.AddToDisplay.Display("Starting Server socket on port " + tcpsettings.PORT, DisplayMessageType.INFORMATION);
 
         try {
-            connSock = new Socket(tcpsettings.EQUIPMENT_IP, tcpsettings.PORT);
+            welcomeSocket = new ServerSocket(tcpsettings.PORT);
 
             log.AddToDisplay.Display("Waiting for Equipment connection...", DisplayMessageType.INFORMATION);
             log.AddToDisplay.Display("Listening on port " + tcpsettings.PORT + "...", DisplayMessageType.INFORMATION);
-
+            connSock = welcomeSocket.accept();
             log.AddToDisplay.Display("Mindray BC 120 is now Connected...", DisplayMessageType.INFORMATION);
             first = false;
             ClientThread client = new ClientThread(connSock, "Mindray BC 120");

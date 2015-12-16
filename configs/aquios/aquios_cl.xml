@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Stephen Adjei-Kyei (GHSS) -->
+<configuration>
+	<supportedtestTypes>
+		<testtype>		
+			<testtypeid>35</testtypeid>
+			<testtypename>CD4</testtypename>
+		</testtype>			
+	</supportedtestTypes>
+	<supportedsamples>		
+		<sample>
+			<equipmentsampleid>1</equipmentsampleid>
+			<lissampleid>14</lissampleid>
+			<samplename>Serum</samplename>
+		</sample>		
+	</supportedsamples>
+	<supportedtests>
+		<listest>
+			<equipmenttestid>0</equipmenttestid>
+			<listestid>27</listestid>
+			<listestname>PLG+**CD45PCNT</listestname>
+		</listest>	
+		<listest>
+			<equipmenttestid>1</equipmenttestid>
+			<listestid>28</listestid>
+			<listestname>PLG+**LYCNT</listestname>
+		</listest>	
+		<listest>
+			<equipmenttestid>2</equipmenttestid>
+			<listestid>29</listestid>
+			<listestname>PLG+CD4CD45CNT</listestname>
+		</listest>
+		<listest>
+			<equipmenttestid>3</equipmenttestid>
+			<listestid>30</listestid>
+			<listestname>PLG+**CD4LYCNT</listestname>
+		</listest>
+		<listest>
+			<equipmenttestid>4</equipmenttestid>
+			<listestid>31</listestid>
+			<listestname>PLG+CD4LYPCT</listestname>
+		</listest>
+	</supportedtests>
+</configuration>

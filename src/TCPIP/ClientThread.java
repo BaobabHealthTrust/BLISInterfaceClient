@@ -13,6 +13,8 @@ package TCPIP;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import log.*;
 
@@ -93,7 +95,7 @@ class ClientThread extends Thread {
                         int val;
                         String line = "";
                         while ((val = inFromEquipment.read()) > -1) {
-                            if(val == ENQ) {
+                            if (val == ENQ) {
 
                                 System.out.println("Query sent");
 
@@ -105,6 +107,42 @@ class ClientThread extends Thread {
                                 line = line + "\r";
                                 read = read + line;
                                 if (line.startsWith("L|1|N"))
+                                    break;
+                                line = "";
+                                c++;
+                            }
+                          /*if(c>=29)
+                              break;*/
+                        }
+                    } else if (this.Equipmentname.equalsIgnoreCase("AQUIOS CL")) {
+                        int c = 0;
+                        int val;
+                        String line = "";
+                        while ((val = inFromEquipment.read()) > -1) {
+                            if ((char) val == ENQ || (char) val == EOT || (char) val == ETX || (char) val == ETB) {
+
+                                System.out.println("Special character sent");
+
+                                AquiosCL.OutQueue.add("\u0006");
+
+                            } else if (val != 13)
+                                line = line + (char) val;
+                            else {
+                                String pattern = "L\\|1\\|N";
+
+                                // Create a Pattern object
+                                Pattern r = Pattern.compile(pattern);
+
+                                // Now create matcher object.
+                                Matcher m = r.matcher(line);
+
+                                line = line.trim().replaceAll("^\\d+", "");
+
+                                line = line + "\r";
+
+                                read = read + line;
+                                // if (line.trim().startsWith("L|1|N"))
+                                if (m.find())
                                     break;
                                 line = "";
                                 c++;
@@ -250,6 +288,9 @@ class ClientThread extends Thread {
                             break;
                         case "Erba XL 200":
                             ErbaXL200.handleMessage(read);
+                            break;
+                        case "AQUIOS CL":
+                            AquiosCL.handleMessage(read);
                             break;
                     }
                 }
