@@ -9,7 +9,7 @@ setTimeout(function() {
     for (var i in files) {
 
         var child = exec('cd ' + path.resolve('machines', 'active', files[i]) + '; java -jar ' + path.resolve('machines',
-                'active', files[i], 'BLISInterfaceClient.jar'),
+                'BLISInterfaceClient.jar'),
             function (error, stdout, stderr) {
                 console.log('Output -> ' + stdout);
                 if (error !== null) {
