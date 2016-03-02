@@ -462,9 +462,15 @@ public class GeneXpert extends Thread{
         try
         {
             //String[] msgParts = message.split("\r");
-            MSGTYPE type =getMessageType(message);           
+            MSGTYPE type =getMessageType(message);
+
+            log.logger.Logger("MSGTYPE.ENQ : "+MSGTYPE.ENQ);
+
+            log.logger.Logger("type == MSGTYPE.ENQ : "+(type == MSGTYPE.ENQ));
+
             if(type == MSGTYPE.ENQ)
-            {                
+            {
+
                 AddtoQueue(ACK);
                //ASTMMsgs="";
                appMode = MODE.RECEIVEING_RESULTS;
