@@ -5,10 +5,14 @@
 		<testtype>		
 			<testtypeid>32</testtypeid>
 			<testtypename>Liver Function Tests</testtypename>
-		</testtype>			
+		</testtype>		
 		<testtype>		
 			<testtypeid>33</testtypeid>
-			<testtypename>U & Es</testtypename>
+			<testtypename>Renal Function Test</testtypename>
+		</testtype>			
+		<testtype>		
+			<testtypeid>38</testtypeid>
+			<testtypename>Glucose</testtypename>
 		</testtype>	
 		<testtype>		
 			<testtypeid>34</testtypeid>
@@ -18,8 +22,8 @@
 	<supportedsamples>		
 		<sample>
 			<equipmentsampleid>1</equipmentsampleid>
-			<lissampleid>14</lissampleid>
-			<samplename>Whole Blood</samplename>
+			<lissampleid>3</lissampleid>
+			<samplename>Blood</samplename>
 		</sample>		
 	</supportedsamples>
 	<supportedtests>
@@ -65,7 +69,7 @@
 		</listest>
 		<listest>
 			<equipmenttestid>8</equipmenttestid>
-			<listestid>144</listestid>
+			<listestid>204</listestid>
 			<listestname>GLU</listestname>
 		</listest>
 		<listest>

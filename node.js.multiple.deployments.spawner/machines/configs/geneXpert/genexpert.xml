@@ -17,12 +17,12 @@
 	<supportedtests>
 		<listest>
 			<equipmenttestid>59</equipmenttestid>
-			<listestid>58</listestid>
+			<listestid>202</listestid>
 			<listestname>MTB</listestname>
 		</listest>	
 		<listest>
 			<equipmenttestid>214</equipmenttestid>
-			<listestid>184</listestid>
+			<listestid>203</listestid>
 			<listestname>RIF Resistance</listestname>
 		</listest>			
 	</supportedtests>

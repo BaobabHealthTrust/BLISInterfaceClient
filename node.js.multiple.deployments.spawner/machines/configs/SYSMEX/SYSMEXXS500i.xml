@@ -10,8 +10,8 @@
 	<supportedsamples>
 		<sample>
 			<equipmentsampleid>1</equipmentsampleid>
-			<lissampleid>14</lissampleid>
-			<samplename>Whole Blood</samplename>
+			<lissampleid>3</lissampleid>
+			<samplename>Blood</samplename>
 		</sample>
 	</supportedsamples>
 	<supportedtests>
@@ -122,6 +122,11 @@
 			<listestname>MPV</listestname>
 		</listest>
 		<listest>
+	  <listest>
+			<equipmenttestid>18</equipmenttestid>
+			<listestid>176</listestid>
+			<listestname>P-LCR</listestname>
+		</listest>	
 			<equipmenttestid>18</equipmenttestid>
 			<listestid>156</listestid>
 			<listestname>PDW</listestname>

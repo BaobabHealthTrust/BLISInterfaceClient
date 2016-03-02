@@ -10,8 +10,8 @@
 	<supportedsamples>		
 		<sample>
 			<equipmentsampleid>1</equipmentsampleid>
-			<lissampleid>15</lissampleid>
-			<samplename>Serum</samplename>
+			<lissampleid>3</lissampleid>
+			<samplename>Blood</samplename>
 		</sample>		
 	</supportedsamples>
 	<supportedtests>
