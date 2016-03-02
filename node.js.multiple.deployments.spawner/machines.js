@@ -8,8 +8,9 @@ setTimeout(function() {
 
     for (var i in files) {
 
-        var child = exec('cd ' + path.resolve('machines', 'active', files[i]) + '; java -jar ' + path.resolve('machines',
-                'BLISInterfaceClient.jar'),
+				// java -cp lib/JSSC/jssc-2.8.0.jar:lib/jackson/jackson-annotations-2.2.3.jar:lib/jackson/jackson-core-2.2.3.jar:lib/jackson/jackson-databind-2.2.3.jar:lib/AbsoluteLayout.jar:BLISInterfaceClient.jar ui.MainForm
+
+        var child = exec('cd ' + path.resolve('machines', 'active', files[i]) + '; java -cp lib/JSSC/jssc-2.8.0.jar:lib/jackson/jackson-annotations-2.2.3.jar:lib/jackson/jackson-core-2.2.3.jar:lib/jackson/jackson-databind-2.2.3.jar:lib/AbsoluteLayout.jar:BLISInterfaceClient.jar ui.MainForm',
             function (error, stdout, stderr) {
                 console.log('Output -> ' + stdout);
                 if (error !== null) {

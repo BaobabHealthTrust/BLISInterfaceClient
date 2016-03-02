@@ -1,0 +1,4 @@
+/usr/lib/jvm/java-8-oracle/jre/bin/java -cp /home/chimwemwe/projects/work/apps/LIMS/BLISInterfaceClient/lib/JSSC/jssc-2.8.0.jar:/home/chimwemwe/projects/work/apps/LIMS/BLISInterfaceClient/lib/jackson/jackson-annotations-2.2.3.jar:/home/chimwemwe/projects/work/apps/LIMS/BLISInterfaceClient/lib/jackson/jackson-core-2.2.3.jar:/home/chimwemwe/projects/work/apps/LIMS/BLISInterfaceClient/lib/jackson/jackson-databind-2.2.3.jar:/home/chimwemwe/projects/work/apps/LIMS/BLISInterfaceClient/lib/AbsoluteLayout.jarlib/commons-codec-1.10.jar:/home/chimwemwe/projects/work/apps/LIMS/BLISInterfaceClient/dist/BLISInterfaceClient.jar ui.MainForm
+
+
+java -cp lib/JSSC/jssc-2.8.0.jar:lib/jackson/jackson-annotations-2.2.3.jar:lib/jackson/jackson-core-2.2.3.jar:lib/jackson/jackson-databind-2.2.3.jar:lib/AbsoluteLayout.jar:BLISInterfaceClient.jar ui.MainForm
